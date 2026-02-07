@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Website Performance Visualizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- jsPDF for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>⚡ Website Performance Visualizer</h1>
+  <p>Frontend-only Lighthouse-style analyzer</p>
+</header>
+
+<section class="controls">
+  <input id="urlInput" placeholder="https://example.com" />
+
+  <select id="device">
+    <option value="desktop">Desktop</option>
+    <option value="mobile">Mobile</option>
+  </select>
+
+  <select id="network">
+    <option value="wifi">WiFi</option>
+    <option value="4g">4G</option>
+    <option value="3g">3G</option>
+  </select>
+
+  <button onclick="analyze()">Analyze</button>
+  <button onclick="exportPDF()">Export PDF</button>
+</section>
+
+<section class="gauges">
+  <div class="gauge" id="performanceGauge">
+    <svg>
+      <circle cx="60" cy="60" r="50"></circle>
+      <circle cx="60" cy="60" r="50" id="perfCircle"></circle>
+    </svg>
+    <span id="perfScore">0</span>
+    <p>Performance</p>
+  </div>
+
+  <div class="metric-box">
+    <p>LCP</p>
+    <strong id="lcp">-- ms</strong>
+  </div>
+
+  <div class="metric-box">
+    <p>FID</p>
+    <strong id="fid">-- ms</strong>
+  </div>
+
+  <div class="metric-box">
+    <p>CLS</p>
+    <strong id="cls">--</strong>
+  </div>
+</section>
+
+<section class="tips">
+  <h2>Optimization Suggestions</h2>
+  <ul id="suggestions"></ul>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
